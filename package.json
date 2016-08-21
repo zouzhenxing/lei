@@ -1,0 +1,26 @@
+{
+  "name": "lei",
+  "version": "1.0.0",
+  "description": "this is a node services formwork",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter mochawesome"
+  },
+  "author": "zouzhenxing",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "connect-redis": "^3.1.0",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "ioredis": "^2.3.0",
+    "mocha": "^2.5.3",
+    "mochawesome": "^1.5.1",
+    "multer": "^1.2.0",
+    "mysql": "^2.11.1",
+    "node-fetch": "^1.6.0"
+  }
+}
