@@ -26,4 +26,4 @@ npm i
 node index.js
 
 4. 运行测试
-npm test
+npm test 完成后在mochawesome-reports目录中查看测试报告
