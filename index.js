@@ -9,7 +9,7 @@ global.fs = Promise.promisifyAll(require("fs"));
 global.util = require("./util.js");
 global.config = util.loadConfig();
 global.pool = util.connectDB();
-global.redisClient = util.redisClient();
+// global.redisClient = util.redisClient();
 
 global.express = require("express");
 var bodyparser = require("body-parser");
@@ -31,9 +31,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { secure: true,maxAge: 1000 * 60 * 12 },
-  store: new RedisStore({
-      client : redisClient
-  })
+  // store: new RedisStore({
+  //     client : redisClient
+  // })
 }));
 
 //设置ejs模板

@@ -3,6 +3,7 @@ logs
 *.log
 npm-debug.log*
 .vscode
+mochawesome-reports/
 
 # Runtime data
 pids
