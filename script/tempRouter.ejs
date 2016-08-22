@@ -1,0 +1,12 @@
+'use strict';
+
+let <%=table%>Service = require(rootPath.concat("/service/<%=table%>Service.js"));
+let <%=table%>Router = express.Router();
+
+<%=table%>Router.get("/",<%=table%>Service.select);
+<%=table%>Router.get("/:id",<%=table%>Service.get);
+<%=table%>Router.post("/",<%=table%>Service.add);
+<%=table%>Router.put("/:id",<%=table%>Service.update);
+<%=table%>Router.delete("/:id",<%=table%>Service.delete);
+
+module.exports = <%=table%>Router;

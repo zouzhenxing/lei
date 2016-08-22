@@ -8,7 +8,7 @@ var header = {"Content-type":"application/x-www-form-urlencoded"};
 
 describe('admin表测试',() => {
     it("增加会员测试",() => {
-        let body = "name=admin@yuanku.org&pwd=admin";
+        let body = "name=admin@yuanku.org&password=admin";
         return fetch(rooturl.concat('/admin'),{method:'post',headers:header,body:body}).then(( res )=> {
             return res.json();
         }).then((json)=> {
@@ -27,7 +27,7 @@ describe('admin表测试',() => {
     });
 
     it("根据ID修改会员",()=> {
-        let body = "name=update@yuanku.org&pwd=update";     
+        let body = "name=update@yuanku.org&password=update";     
         return fetch(rooturl.concat('/admin/1'),{method:'put',headers:header,body:body}).then(( res )=> {
             return res.json();
         }).then((json)=> {
