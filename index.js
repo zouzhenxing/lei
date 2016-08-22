@@ -1,16 +1,6 @@
 'use strict';
 
-/**
- * 全局设置
- */
-global.rootPath = __dirname;
-global.Promise = require("bluebird");
-global.fs = Promise.promisifyAll(require("fs"));
 global.util = require("./util.js");
-global.config = util.loadConfig();
-global.pool = util.connectDB();
-// global.redisClient = util.redisClient();
-
 global.express = require("express");
 var bodyparser = require("body-parser");
 var ejs = require("ejs");
@@ -29,8 +19,7 @@ var RedisStore = require('connect-redis')(session);
 app.use(session({
   secret: '!@#$%',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true,maxAge: 1000 * 60 * 12 },
+  saveUninitialized: true
   // store: new RedisStore({
   //     client : redisClient
   // })
@@ -42,7 +31,7 @@ app.set('view engine', 'html');
 app.engine('.html', ejs.__express);
 
 //挂载自定义路由表
-app.use("/login",require(rootPath.concat("/router/loginRouter.js")));
+app.use("/admin",require(rootPath.concat("/router/adminRouter.js")));
 
 //404错误中间件
 app.use((req, res, next) => {
