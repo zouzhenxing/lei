@@ -18,6 +18,8 @@ var getTableObject = ( fields ) => {
     fields.map((field) => {
         if( field.Key === 'PRI' ) {
             pk = field.Field;
+        } else if( field.Type === "datetime" ) {
+            updatestr.push(field.Field.concat(" = now()"));
         } else {
             updatestr.push(field.Field.concat(" = :",field.Field));
         }
