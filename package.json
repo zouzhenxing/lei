@@ -4,8 +4,8 @@
   "description": "this is a node services formwork",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "test:report" : "./node_modules/.bin/mocha --reporter mochawesome"
+    "test:report": "./node_modules/.bin/mocha",
+    "test" : "./node_modules/.bin/mocha --reporter mochawesome"
   },
   "repository": {
     "type": "git",

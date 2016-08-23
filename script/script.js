@@ -49,35 +49,35 @@ Promise.coroutine(function* () {
     let tableobj = getTableObject(fields);
 
     //读取路由模板
-    let tmprouter = yield fs.readFileAsync("./tempRouter.ejs");
+    let tmprouter = yield fs.readFileAsync("./script/tempRouter.ejs");
     //编译模板
     tmprouter = ejs.render(tmprouter.toString(),{table:table});
     //写入模板
-    yield fs.writeFileAsync("../router/".concat(table,"Router.js"),tmprouter);
+    yield fs.writeFileAsync("./router/".concat(table,"Router.js"),tmprouter);
     console.log("路由文件创建成功!");
     
     //读取服务模板
-    let tmpservice = yield fs.readFileAsync("./tempService.ejs");
+    let tmpservice = yield fs.readFileAsync("./script/tempService.ejs");
     //编译模板
     tmpservice = ejs.render(tmpservice.toString(),{table:table});
     //写入模板
-    yield fs.writeFileAsync("../service/".concat(table,"Service.js"),tmpservice);
+    yield fs.writeFileAsync("./service/".concat(table,"Service.js"),tmpservice);
     console.log("服务文件创建成功!");
 
     // 读取模型模板
-    let tmpmodule = yield fs.readFileAsync("./tempModule.ejs");
+    let tmpmodule = yield fs.readFileAsync("./script/tempModule.ejs");
     //编译模板
     tmpmodule = ejs.render(tmpmodule.toString(),{table:table,tableobj:tableobj});
     //写入模板
-    yield fs.writeFileAsync("../module/".concat(table,"Module.js"),tmpmodule);
+    yield fs.writeFileAsync("./module/".concat(table,"Module.js"),tmpmodule);
     console.log("模型文件创建成功!");
 
     // 读取测试模板
-    let tmptest = yield fs.readFileAsync("./temp.test.ejs");
+    let tmptest = yield fs.readFileAsync("./script/temp.test.ejs");
     //编译模板
     tmptest = ejs.render(tmptest.toString(),{table:table,fields:fields,tableobj:tableobj});
     //写入模板
-    yield fs.writeFileAsync("../test/".concat(table,".test.js"),tmptest);
+    yield fs.writeFileAsync("./test/".concat(table,".test.js"),tmptest);
     console.log("创建测试文件成功!");
     
     console.log(fields);
