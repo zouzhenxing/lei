@@ -9,24 +9,24 @@ exports.select= ( conn,param ) => {
 }
 
 exports.get = ( conn,param ) => {
-    let sql = "select * from <%=table %> where <%=tableobj.PK%> = :id";
+    let sql = `select * from <%=table %> where <%=tableobj.PK%> = :id`;
     return conn.queryAsync(sql,param);
 }
 
 exports.add = ( conn,param ) => {
-    let sql = "insert into <%=table %> values(<%=tableobj.inserstr%>)";
+    let sql = `insert into <%=table %> values(<%=tableobj.inserstr%>)`;
     return conn.queryAsync(sql,param).then((result)=> {
         return result.insertId;
     });
 }
 
 exports.update = ( conn,param ) => {
-    let sql = "update <%=table %> set <%=tableobj.updatestr%> where <%=tableobj.PK%> = :id";
+    let sql = `update <%=table %> set <%=tableobj.updatestr%> where <%=tableobj.PK%> = :id`;
     return conn.queryAsync(sql,param);
 }
 
 exports.delete = ( conn,param ) => {
-    let sql = "delete from <%=table %> where <%=tableobj.PK%> = :id";
+    let sql = `delete from <%=table %> where <%=tableobj.PK%> = :id`;
     return conn.queryAsync(sql,param).then((result) => {
         return result.affectedRows;
     });
