@@ -31,7 +31,7 @@ app.set('view engine', 'html');
 app.engine('.html', ejs.__express);
 
 //挂载自定义路由表
-app.use("/admin",require(rootPath.concat("/router/adminRouter.js")));
+// app.use("/admin",require(rootPath.concat("/router/adminRouter.js")));
 
 //404错误中间件
 app.use((req, res, next) => {

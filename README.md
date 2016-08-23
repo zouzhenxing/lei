@@ -21,10 +21,15 @@ exports.pool = mysql.createPool({
     dateStrings : 'DATETIME'
 });
 ```
-##第三步：进入script文件夹，运行
+##第三步：生成代码
 node script\script 表名  生成对应表的CURD代码 
 
-##第四步：查看代码，进行相应的数据库字段整理，开启服务器
+##第四步：查看代码，进行相应的数据库字段整理，
+```
+//挂载自定义路由表
+// app.use("/admin",require(rootPath.concat("/router/adminRouter.js")));
+```
+开启服务器
 node index
 
 ##第五步：测试代码
