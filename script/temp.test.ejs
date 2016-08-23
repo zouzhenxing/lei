@@ -12,7 +12,7 @@ var header = {"Content-type":"application/x-www-form-urlencoded"};
 <% }) %>
 */
 describe('<%=table%>表测试',() => {
-    it("增加会员测试",() => {
+    it("增加<%=table%>测试",() => {
         //请填写增加对象let body = "name=admin@yuanku.org&password=admin";
         let body = "";
         return fetch(rooturl.concat('/<%=table%>'),{method:'post',headers:header,body:body}).then(( res )=> {
@@ -23,7 +23,7 @@ describe('<%=table%>表测试',() => {
         });
     });
 
-    it("根据ID获取会员",()=> {      
+    it("根据ID获取<%=table%>",()=> {      
         return fetch(rooturl.concat('/<%=table%>/1')).then(( res )=> {
             return res.json();
         }).then((json)=> {
@@ -32,7 +32,7 @@ describe('<%=table%>表测试',() => {
         });
     });
 
-    it("根据ID修改会员",()=> {
+    it("根据ID修改<%=table%>",()=> {
         //请填写修改对象let body = "name=update@yuanku.org&password=update";
         let body = "";     
         return fetch(rooturl.concat('/<%=table%>/1'),{method:'put',headers:header,body:body}).then(( res )=> {
@@ -43,7 +43,7 @@ describe('<%=table%>表测试',() => {
         });
     });
 
-    it("根据ID删除会员",()=> {   
+    it("根据ID删除<%=table%>",()=> {   
         return fetch(rooturl.concat('/<%=table%>/0'),{method:'delete'}).then(( res )=> {
             return res.json();
         }).then((json)=> {
@@ -52,7 +52,7 @@ describe('<%=table%>表测试',() => {
         });
     });
 
-    it("查询会员",()=> {   
+    it("查询<%=table%>",()=> {   
         return fetch(rooturl.concat('/<%=table%>')).then(( res )=> {
             return res.json();
         }).then((json)=> {
