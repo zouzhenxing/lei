@@ -9,7 +9,7 @@ global.fs = Promise.promisifyAll(require("fs"));
  * 加载配置文件
  */
 var loadConfig = () => {
-    var data = fs.readFileSync(rootPath + "/config.json");
+    var data = fs.readFileSync(rootPath.concat("/config.json"));
     return JSON.parse(data.toString());
 }
 global.config = loadConfig();
@@ -24,7 +24,7 @@ var redisClient = () => {
 // global.redisClient = redisClient();
 
 /**
- * 加载配置文件
+ * 加载数据库配置文件
  */
 var mysql = require("mysql");
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
@@ -59,25 +59,15 @@ var sqlFormat = function (query, values) {
 };
 
 /**
- * 合成对象
- */
-exports.copyObject = ( source,target ) => {
-    for(var key in source) {
-        target[key] = source[key];
-    }
-    return target;
-}
-
-/**
  * 成功返回
  */
 exports.success = ( obj ) => {
-    return this.copyObject(config.message.success,obj);
+    return Object.assign(obj,config.message.success);
 }
 
 /**
  * 返回失败
  */
 exports.fail = ( obj ) => {
-    return this.copyObject(config.message.error,obj);
+    return Object.assign(obj,config.message.error);
 }

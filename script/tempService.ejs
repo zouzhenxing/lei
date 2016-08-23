@@ -3,7 +3,17 @@
 var <%=table %>Module = require(rootPath.concat("/module/<%=table%>Module.js"));
 
 exports.select = (req,res,next) => {
-
+    let conn;
+    Promise.coroutine(function* () {
+        conn = yield util.getConnect();
+        let result = yield <%=table %>Module.select(conn,req.query);
+        return res.json(util.success( {data:result} ));
+    })().catch(( err )=> {
+        console.log(err);
+        return res.json(config.message.error);
+    }).finally(()=> {
+        conn.release();
+    });
 }
 
 exports.get = (req,res,next) => {

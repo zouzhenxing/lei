@@ -5,11 +5,17 @@ var fetch = require("node-fetch");
 
 var rooturl = "http://localhost";
 var header = {"Content-type":"application/x-www-form-urlencoded"};
-
-describe('admin表测试',() => {
+/*
+<%=table%>表的字段
+<% fields.map( (field) => { %>
+<% for(var key in field) { %><%=key%>:<%=field[key]%> <% }%>
+<% }) %>
+*/
+describe('<%=table%>表测试',() => {
     it("增加会员测试",() => {
-        let body = "name=admin@yuanku.org&password=admin";
-        return fetch(rooturl.concat('/admin'),{method:'post',headers:header,body:body}).then(( res )=> {
+        //请填写增加对象let body = "name=admin@yuanku.org&password=admin";
+        let body = "";
+        return fetch(rooturl.concat('/<%=table%>'),{method:'post',headers:header,body:body}).then(( res )=> {
             return res.json();
         }).then((json)=> {
             console.log(json);
@@ -18,7 +24,7 @@ describe('admin表测试',() => {
     });
 
     it("根据ID获取会员",()=> {      
-        return fetch(rooturl.concat('/admin/1')).then(( res )=> {
+        return fetch(rooturl.concat('/<%=table%>/1')).then(( res )=> {
             return res.json();
         }).then((json)=> {
             console.log(json);
@@ -27,8 +33,9 @@ describe('admin表测试',() => {
     });
 
     it("根据ID修改会员",()=> {
-        let body = "name=update@yuanku.org&password=update";     
-        return fetch(rooturl.concat('/admin/1'),{method:'put',headers:header,body:body}).then(( res )=> {
+        //请填写修改对象let body = "name=update@yuanku.org&password=update";
+        let body = "";     
+        return fetch(rooturl.concat('/<%=table%>/1'),{method:'put',headers:header,body:body}).then(( res )=> {
             return res.json();
         }).then((json)=> {
             console.log(json);
@@ -37,11 +44,20 @@ describe('admin表测试',() => {
     });
 
     it("根据ID删除会员",()=> {   
-        return fetch(rooturl.concat('/admin/0'),{method:'delete'}).then(( res )=> {
+        return fetch(rooturl.concat('/<%=table%>/0'),{method:'delete'}).then(( res )=> {
             return res.json();
         }).then((json)=> {
             console.log(json);
             expect(json).to.be.deep.equal({"code":1,"msg":"操作成功!"});
+        });
+    });
+
+    it("查询会员",()=> {   
+        return fetch(rooturl.concat('/<%=table%>')).then(( res )=> {
+            return res.json();
+        }).then((json)=> {
+            console.log(json);
+            expect(json).to.not.be.empty;
         });
     });
 });

@@ -7,7 +7,7 @@ var ejs = require("ejs");
 var app = express();
 
 //静态文件中间件
-app.use(express.static('public'));
+app.use("/public",express.static('public'));
 
 //配置post body解析中间件
 app.use(bodyparser.json());
