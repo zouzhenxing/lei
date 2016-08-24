@@ -35,7 +35,8 @@ app.engine('.html', ejs.__express);
 
 
 //处理favicon.ico请求
-app.use(/.*favicon.ico$/,util.icoHandle);
+var favicon = require('serve-favicon');
+app.use(favicon(rootPath.concat('/public/favicon.ico')));
 
 //404错误中间件
 app.use((req, res, next) => {

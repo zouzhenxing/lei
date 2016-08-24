@@ -80,12 +80,6 @@ exports.upfile = () => {
     });
 }
 
-
-//处理favicon请求
-exports.icoHandle = (req,res,next)=> {
-    res.sendFile(rootPath.concat("/public/favicon.ico"));
-}
-
 /**
  * 成功返回
  */
