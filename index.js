@@ -50,4 +50,4 @@ process.on('uncaughtException', (err) => {
   console.log(`Caught exception: ${err}`);
 });
 
-app.listen(80,() => console.log("服务器启动成功!"));
+app.listen(config.prot,() => console.log("服务器启动成功!"));

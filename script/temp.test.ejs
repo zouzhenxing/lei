@@ -3,7 +3,7 @@
 var expect = require('chai').expect;
 var fetch = require("node-fetch");
 
-var rooturl = "http://localhost";
+var rooturl = "http://localhost:<%=config.port%>";
 var header = {"Content-type":"application/x-www-form-urlencoded"};
 /*
 <%=table%>表的字段
