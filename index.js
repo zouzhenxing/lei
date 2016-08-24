@@ -33,6 +33,10 @@ app.engine('.html', ejs.__express);
 //挂载自定义路由表
 // app.use("/admin",require(rootPath.concat("/router/adminRouter.js")));
 
+
+//处理favicon.ico请求
+app.use(/.*favicon.ico$/,util.icoHandle);
+
 //404错误中间件
 app.use((req, res, next) => {
     console.error(req.url.concat("not found"));
