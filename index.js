@@ -52,7 +52,7 @@ app.use((err, req, res, next) => {
 
 //当发生了未捕获的异常 守护中间件
 process.on('uncaughtException', (err) => {
-  console.log(`Caught exception: ${err}`);
+  console.log(`Caught exception: ${err.stack}`);
 });
 
 app.listen(config.prot,() => console.log("服务器启动成功!"));
