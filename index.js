@@ -30,9 +30,7 @@ app.set("views","./views");
 app.set('view engine', 'html');
 app.engine('.html', ejs.__express);
 
-//挂载自定义路由表
-// app.use("/admin",require(rootPath.concat("/router/adminRouter.js")));
-
+//挂载自定义路由表(勿删)
 
 //处理favicon.ico请求
 var favicon = require('serve-favicon');
@@ -40,7 +38,7 @@ app.use(favicon(rootPath.concat('/public/favicon.ico')));
 
 //404错误中间件
 app.use((req, res, next) => {
-    console.error(req.url.concat("not found"));
+    console.error(req.url.concat(" not found"));
     res.status(404).send(config.message.notfound);
 });
 
@@ -55,4 +53,4 @@ process.on('uncaughtException', (err) => {
   console.log(`Caught exception: ${err.stack}`);
 });
 
-app.listen(config.prot,() => console.log("服务器启动成功!"));
+app.listen(config.port,() => console.log("服务器启动成功!","端口号:",config.port));

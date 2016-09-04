@@ -29,7 +29,7 @@ exports.pool = mysql.createPool({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'epay',
+    database : 'hurun',
     dateStrings : 'DATETIME'
 });
 /**

@@ -21,6 +21,7 @@
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
+    "form-data": "^1.0.1",
     "ioredis": "^2.3.0",
     "mocha": "^2.5.3",
     "mochawesome": "^1.5.1",

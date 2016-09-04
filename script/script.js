@@ -56,6 +56,10 @@ Promise.coroutine(function* () {
     tmprouter = ejs.render(tmprouter.toString(),{table:table});
     //写入模板
     yield fs.writeFileAsync("./router/".concat(table,"Router.js"),tmprouter);
+    //增加路由至index.js
+    let index = yield fs.readFileAsync("./index.js");
+    let routerstr = 'app.use("/'.concat(table,'",require(rootPath.concat("/router/',table,'Router.js")));');
+    yield fs.writeFileAsync("./index.js",index.toString().replace("//挂载自定义路由表(勿删)","//挂载自定义路由表(勿删)".concat("\n",routerstr)));
     console.log("路由文件创建成功!");
     
     //读取服务模板
@@ -81,8 +85,7 @@ Promise.coroutine(function* () {
     //写入模板
     yield fs.writeFileAsync("./test/".concat(table,".test.js"),tmptest);
     console.log("创建测试文件成功!");
-    
-    console.log(fields);
+
     process.exit(0);
 })().catch((err) => {
     console.log(err.stack);
