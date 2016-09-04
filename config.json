@@ -1,12 +1,10 @@
 {
-    //系统提示信息
     "message": {
         "notfound" : {"code":0,"msg":"页面没找到!"},
         "servererr" : {"code":0,"msg":"服务器内部异常!"},
         "success" : {"code":1,"msg":"操作成功!"},
         "error" : {"code":0,"msg":"操作失败!"}
     },
-    //mysql数据库配置
     "mysql" : {
         "host"        : "localhost",
         "port"        : "3306",
@@ -15,13 +13,10 @@
         "database"    : "",
         "dateStrings" : "DATETIME"
     },
-    //redis配置
     "redis" : {
         "host" : "127.0.0.1",
         "port" : "6379"
     },
-    //分页显示参数
     "pagecount" : 20,
-    //web服务器端口
     "port" : 80
 }
