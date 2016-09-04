@@ -92,24 +92,3 @@ Promise.coroutine(function* () {
 }).finally(()=> {
     conn.release();
 });
-
-
-
-/**
- * 获取数据库中所有表名
- */
-// var getAllTables = ( conn ) => {
-//     let sql = "show tables";
-//     return conn.queryAsync(sql).then((result) => {
-//         if( result.length == 0 ) {
-//             return console.log("没有在数据库中找到表!");
-//         }
-
-//         let key = Object.keys(result[0])[0];
-//         let tables = [];
-//         result.map((item)=> {
-//             tables.push(item[key]);
-//         });
-//         return tables;
-//     });
-// }

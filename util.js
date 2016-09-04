@@ -15,7 +15,7 @@ global.config = require("./config.json");
  */
 var ioRedis = require('ioredis');
 var redisClient = () => {
-    return ioRedis.createClient(6379, '127.0.0.1');
+    return ioRedis.createClient(config.redis.port, config.redis.host);
 }
 // global.redisClient = redisClient();
 
@@ -25,13 +25,8 @@ var redisClient = () => {
 var mysql = require("mysql");
 Promise.promisifyAll(require("mysql/lib/Connection").prototype);
 Promise.promisifyAll(require("mysql/lib/Pool").prototype);
-exports.pool = mysql.createPool({
-    host     : 'localhost',
-    user     : 'root',
-    password : '',
-    database : 'hurun',
-    dateStrings : 'DATETIME'
-});
+exports.pool = mysql.createPool(config.mysql);
+
 /**
  * 获取数据库连接
  */
