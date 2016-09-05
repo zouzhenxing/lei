@@ -9,7 +9,7 @@
         "host"        : "<%=mysql.host%>",
         "port"        : "<%=mysql.port%>",
         "user"        : "<%=mysql.username%>",
-        "password"    : "<%=mysql.passowrd%>",
+        "password"    : "<%=mysql.password%>",
         "database"    : "<%=mysql.database%>",
         "dateStrings" : "DATETIME"
     },
