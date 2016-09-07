@@ -15,7 +15,7 @@ global.config = require("./config.json");
  */
 var ioRedis = require('ioredis');
 var redisClient = () => {
-    return ioRedis.createClient(config.redis.port, config.redis.host);
+    return ioRedis.createClient(config.redis);
 }
 // global.redisClient = redisClient();
 
@@ -75,7 +75,7 @@ exports.upfile = () => {
  * 成功返回
  */
 exports.success = ( obj ) => {
-    return Object.assign(obj,config.message.success);
+    return Object.assign(config.message.success,obj);
 }
 
 /**

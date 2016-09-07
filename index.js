@@ -53,4 +53,9 @@ process.on('uncaughtException', (err) => {
   console.log(`Caught exception: ${err.stack}`);
 });
 
-app.listen(config.port,() => console.log("服务器启动成功!","端口号:",config.port));
+//开启web服务器
+var server = app.listen(config.port,() => console.log("服务器启动成功!","端口号:",config.port));
+
+//开始socket服务器
+// const io = require('socket.io')(server);
+// require(rootPath.concat("/router/wsRouter.js")).webSocket( io );

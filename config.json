@@ -14,8 +14,9 @@
         "dateStrings" : "DATETIME"
     },
     "redis" : {
-        "host" : "127.0.0.1",
-        "port" : "6379"
+        "host" : "192.168.199.108",
+        "port" : "6379",
+        "db" : 1
     },
     "pagecount" : 20,
     "port" : 80
