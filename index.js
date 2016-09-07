@@ -38,13 +38,13 @@ app.use(favicon(rootPath.concat('/public/favicon.ico')));
 
 //404错误中间件
 app.use((req, res, next) => {
-    console.error(req.url.concat(" not found"));
+    console.error(new Date(),req.url.concat(" not found"));
     res.status(404).send(config.message.notfound);
 });
 
 //服务器内中错误处理
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error(new Date(),err.stack);
   res.status(500).send(config.message.servererr);
 });
 

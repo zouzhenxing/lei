@@ -9,7 +9,7 @@ exports.select = (req,res,next) => {
         let result = yield <%=table %>Module.select(conn,req.query);
         return res.json(util.success( {data:result} ));
     })().catch(( err )=> {
-        console.log(err.stack);
+        console.log(new Date(),err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -23,7 +23,7 @@ exports.get = (req,res,next) => {
         let result = yield <%=table%>Module.get(conn,{id:req.params.id});
         return res.json(util.success( {data:result} ));
     })().catch(( err )=> {
-        console.log(err.stack);
+        console.log(new Date(),err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -37,7 +37,7 @@ exports.add = (req,res,next) => {
         yield <%=table%>Module.add(conn,req.body);
         return res.json(config.message.success);
     })().catch(( err )=> {
-        console.log(err.stack);
+        console.log(new Date(),err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -52,7 +52,7 @@ exports.update = (req,res,next) => {
         yield <%=table%>Module.update(conn,req.body);
         return res.json(config.message.success);
     })().catch(( err )=> {
-        console.log(err.stack);
+        console.log(new Date(),err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -66,7 +66,7 @@ exports.delete = (req,res,next) => {
         yield <%=table%>Module.delete(conn,req.params);
         return res.json(config.message.success);
     })().catch(( err )=> {
-        console.log(err.stack);
+        console.log(new Date(),err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
