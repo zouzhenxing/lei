@@ -1,7 +1,7 @@
 'use strict';
 
-let <%=table%>Service = require(rootPath.concat("/service/<%=table%>Service.js"));
-let <%=table%>Router = express.Router();
+const <%=table%>Service = require(rootPath.concat("/service/<%=table%>Service.js"));
+const <%=table%>Router = express.Router();
 
 <%=table%>Router.get("/",<%=table%>Service.select);
 <%=table%>Router.get("/:id",<%=table%>Service.get);
