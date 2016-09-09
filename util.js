@@ -75,7 +75,7 @@ exports.upfile = () => {
  * 成功返回
  */
 exports.success = ( obj ) => {
-    return Object.assign(config.message.success,obj);
+    return Object.assign(obj,config.message.success);
 }
 
 /**

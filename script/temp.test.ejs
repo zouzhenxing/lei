@@ -15,7 +15,7 @@ var header = {"Content-type":"application/json"};
 describe('<%=table%>表测试',() => {
     it("增加<%=table%>测试",() => {
         //请填写增加对象let body = {name:"admin@yuanku.org",password:"admin"};
-        let body = "";
+        let body = {};
         return fetch(rooturl.concat('/<%=table%>'),{method:'post',headers:header,body:JSON.stringify(body)}).then(( res )=> {
             return res.json();
         }).then((json)=> {
@@ -34,8 +34,8 @@ describe('<%=table%>表测试',() => {
     });
 
     it("根据ID修改<%=table%>",()=> {
-        //请填写修改对象let body = "name=update@yuanku.org&password=update";
-        let body = "";     
+        //请填写修改对象let body = {name:"admin@yuanku.org",password:"admin"};
+        let body = {};     
         return fetch(rooturl.concat('/<%=table%>/1'),{method:'put',headers:header,body:JSON.stringify(body)}).then(( res )=> {
             return res.json();
         }).then((json)=> {
