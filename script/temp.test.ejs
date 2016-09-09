@@ -4,7 +4,8 @@ var expect = require('chai').expect;
 var fetch = require("node-fetch");
 
 var rooturl = "http://localhost:<%=config.port%>";
-var header = {"Content-type":"application/x-www-form-urlencoded"};
+var header = {"Content-type":"application/json"};
+
 /*
 <%=table%>表的字段
 <% fields.map( (field) => { %>
@@ -13,9 +14,9 @@ var header = {"Content-type":"application/x-www-form-urlencoded"};
 */
 describe('<%=table%>表测试',() => {
     it("增加<%=table%>测试",() => {
-        //请填写增加对象let body = "name=admin@yuanku.org&password=admin";
+        //请填写增加对象let body = {name:"admin@yuanku.org",password:"admin"};
         let body = "";
-        return fetch(rooturl.concat('/<%=table%>'),{method:'post',headers:header,body:body}).then(( res )=> {
+        return fetch(rooturl.concat('/<%=table%>'),{method:'post',headers:header,body:JSON.stringify(body)}).then(( res )=> {
             return res.json();
         }).then((json)=> {
             console.log(json);
@@ -35,7 +36,7 @@ describe('<%=table%>表测试',() => {
     it("根据ID修改<%=table%>",()=> {
         //请填写修改对象let body = "name=update@yuanku.org&password=update";
         let body = "";     
-        return fetch(rooturl.concat('/<%=table%>/1'),{method:'put',headers:header,body:body}).then(( res )=> {
+        return fetch(rooturl.concat('/<%=table%>/1'),{method:'put',headers:header,body:JSON.stringify(body)}).then(( res )=> {
             return res.json();
         }).then((json)=> {
             console.log(json);
