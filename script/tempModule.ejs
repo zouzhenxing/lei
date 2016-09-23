@@ -1,32 +1,34 @@
 'use strict';
 
+var mono = require("monologue");
+
 exports.select= ( conn,param ) => {
-    param.page = param.page || 0;
+    param.page = param.page || 1;
     param.pagecount = param.pagecount || config.pagecount;
 
-    let sql = `select * from <%=table %> limit ${param.page * param.pagecount},${param.pagecount}`;
+    let sql = mono().select('*','<%=table %>').limit(param.pagecount,(param.page - 1) * param.pagecount).query().sql;
     return conn.queryAsync(sql,param);
 }
 
 exports.get = ( conn,param ) => {
-    let sql = `select * from <%=table %> where <%=tableobj.PK%> = :id`;
+    let sql = mono().select('*','<%=table %>').where({<%=PK%>:param.id}).query().sql;
     return conn.queryAsync(sql,param);
 }
 
 exports.add = ( conn,param ) => {
-    let sql = `insert into <%=table %> values(<%=tableobj.inserstr%>)`;
+    let sql = mono().insert('<%=table %>',param).query().sql;
     return conn.queryAsync(sql,param).then((result)=> {
         return result.insertId;
     });
 }
 
-exports.update = ( conn,param ) => {
-    let sql = `update <%=table %> set <%=tableobj.updatestr%> where <%=tableobj.PK%> = :id`;
+exports.update = ( conn,data,param ) => {
+    let sql = mono().update('<%=table %>',data).where({<%=PK%>:param.id}).query().sql;
     return conn.queryAsync(sql,param);
 }
 
 exports.delete = ( conn,param ) => {
-    let sql = `delete from <%=table %> where <%=tableobj.PK%> = :id`;
+    let sql = mono().delete('<%=table %>').where({<%=PK%>:param.id}).query().sql;
     return conn.queryAsync(sql,param).then((result) => {
         return result.affectedRows;
     });

@@ -13,31 +13,16 @@ var getTableFaild = ( conn,tabname ) => {
     return conn.queryAsync(sql);
 }
 
-var getTableObject = ( fields ) => {
-    let pk = 0,inserstr = [],updatestr = [];
+var getTablePK = ( fields ) => {
+    let pk = 0;
     fields.map((field) => {
         if( field.Key === 'PRI' ) {
             pk = field.Field;
-        } else if( field.Type === "datetime" ) {
-            updatestr.push(field.Field.concat(" = now()"));
-        } else {
-            updatestr.push(field.Field.concat(" = :",field.Field));
-        }
-
-        if( field.Extra === "auto_increment" ) {
-            inserstr.push("default");
-        } else if( field.Type === "datetime" ) {
-            inserstr.push("now()");
-        } else {
-            inserstr.push(":".concat(field.Field));
+            return false;
         }
     });
     
-    return {
-        PK : pk,
-        inserstr : inserstr.join(","),
-        updatestr : updatestr.join(",")
-    }
+    return pk;
 }
 
 let conn;
@@ -48,7 +33,7 @@ Promise.coroutine(function* () {
     conn = yield util.getConnect();
     //获取表的字段
     let fields = yield getTableFaild(conn,table);
-    let tableobj = getTableObject(fields);
+    let PK = getTablePK(fields);
 
     //读取路由模板
     let tmprouter = yield fs.readFileAsync("./script/tempRouter.ejs");
@@ -73,7 +58,7 @@ Promise.coroutine(function* () {
     // 读取模型模板
     let tmpmodule = yield fs.readFileAsync("./script/tempModule.ejs");
     //编译模板
-    tmpmodule = ejs.render(tmpmodule.toString(),{table:table,tableobj:tableobj});
+    tmpmodule = ejs.render(tmpmodule.toString(),{table:table,PK:PK});
     //写入模板
     yield fs.writeFileAsync("./module/".concat(table,"Module.js"),tmpmodule);
     console.log("模型文件创建成功!");
@@ -81,7 +66,7 @@ Promise.coroutine(function* () {
     // 读取测试模板
     let tmptest = yield fs.readFileAsync("./script/temp.test.ejs");
     //编译模板
-    tmptest = ejs.render(tmptest.toString(),{table:table,fields:fields,tableobj:tableobj});
+    tmptest = ejs.render(tmptest.toString(),{table:table,fields:fields,PK:PK});
     //写入模板
     yield fs.writeFileAsync("./test/".concat(table,".test.js"),tmptest);
     console.log("创建测试文件成功!");

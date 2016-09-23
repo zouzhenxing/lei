@@ -31,6 +31,10 @@ app.set('view engine', 'html');
 app.engine('.html', ejs.__express);
 
 //挂载自定义路由表(勿删)
+app.use("/user",require(rootPath.concat("/router/userRouter.js")));
+app.use("/user",require(rootPath.concat("/router/userRouter.js")));
+app.use("/user",require(rootPath.concat("/router/userRouter.js")));
+app.use("/user",require(rootPath.concat("/router/userRouter.js")));
 
 //处理favicon.ico请求
 var favicon = require('serve-favicon');

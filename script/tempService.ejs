@@ -20,7 +20,7 @@ exports.get = (req,res,next) => {
     let conn;
     Promise.coroutine(function* () {
         conn = yield util.getConnect();
-        let result = yield <%=table%>Module.get(conn,{id:req.params.id});
+        let result = yield <%=table%>Module.get(conn,req.params);
         return res.json(util.success( {data:result} ));
     })().catch(( err )=> {
         console.log(new Date(),err.stack);
@@ -48,8 +48,7 @@ exports.update = (req,res,next) => {
     let conn;
     Promise.coroutine(function* () {
         conn = yield util.getConnect();
-        req.body.id = req.params.id;
-        yield <%=table%>Module.update(conn,req.body);
+        yield <%=table%>Module.update(conn,req.body,req.params);
         return res.json(config.message.success);
     })().catch(( err )=> {
         console.log(new Date(),err.stack);

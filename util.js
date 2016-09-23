@@ -32,23 +32,9 @@ exports.pool = mysql.createPool(config.mysql);
  */
 exports.getConnect = () => {
     return this.pool.getConnectionAsync().then((conn) => {
-        conn.config.queryFormat = sqlFormat;
         return conn;
     });
 }
-/**
- * 自定义sql语句转议
- */
-var sqlFormat = function (query, values) {
-    if (!values) return query;
-    return query.replace(/\:(\w+)/g, function (txt, key) {
-        if (values.hasOwnProperty(key)) {
-        return this.escape(values[key]);
-        }
-        return txt;
-    }.bind(this));
-};
-
 
 //配置文件上传
 var multer = require('multer');
