@@ -7,29 +7,29 @@ exports.select= ( conn,param ) => {
     param.pagecount = param.pagecount || config.pagecount;
 
     let sql = mono().select('*','<%=table %>').limit(param.pagecount,(param.page - 1) * param.pagecount).query().sql;
-    return conn.queryAsync(sql,param);
+    return conn.queryAsync(sql);
 }
 
 exports.get = ( conn,param ) => {
     let sql = mono().select('*','<%=table %>').where({<%=PK%>:param.id}).query().sql;
-    return conn.queryAsync(sql,param);
+    return conn.queryAsync(sql);
 }
 
 exports.add = ( conn,param ) => {
     let sql = mono().insert('<%=table %>',param).query().sql;
-    return conn.queryAsync(sql,param).then((result)=> {
+    return conn.queryAsync(sql).then((result)=> {
         return result.insertId;
     });
 }
 
 exports.update = ( conn,data,param ) => {
     let sql = mono().update('<%=table %>',data).where({<%=PK%>:param.id}).query().sql;
-    return conn.queryAsync(sql,param);
+    return conn.queryAsync(sql);
 }
 
 exports.delete = ( conn,param ) => {
     let sql = mono().delete('<%=table %>').where({<%=PK%>:param.id}).query().sql;
-    return conn.queryAsync(sql,param).then((result) => {
+    return conn.queryAsync(sql).then((result) => {
         return result.affectedRows;
     });
 }
