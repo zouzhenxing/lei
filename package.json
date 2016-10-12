@@ -25,7 +25,6 @@
     "ioredis": "^2.3.0",
     "mocha": "^2.5.3",
     "mochawesome": "^1.5.1",
-    "monologue": "^0.6.8",
     "multer": "^1.2.0",
     "mysql": "^2.11.1",
     "node-fetch": "^1.6.0",
