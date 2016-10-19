@@ -15,7 +15,7 @@ global.config = require("./config.json");
  */
 var ioRedis = require('ioredis');
 var redisClient = () => {
-    return ioRedis.createClient(config.redis);
+    return new ioRedis(config.redis);
 }
 // global.redisClient = redisClient();
 
