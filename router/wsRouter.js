@@ -1,6 +1,6 @@
 'use strict';
 
-exports.webSocket = ( io ) => {
-    io.on("connect",function( socket ){
-    });    
-}
+exports.webSocket = (io) => {
+  io.on('connect', function (socket){
+  });
+};

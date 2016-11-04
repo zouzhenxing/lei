@@ -1,10 +1,10 @@
 'use strict';
 
-var expect = require('chai').expect;
-var fetch = require("node-fetch");
+const expect = require('chai').expect;
+const fetch = require('node-fetch');
 
-var rooturl = "http://localhost:<%=config.port%>";
-var header = {"Content-type":"application/json"};
+const rooturl = 'http://localhost:<%=config.port%>';
+const header = { 'Content-type': 'application/json' };
 
 /*
 <%=table%>表的字段
@@ -12,53 +12,53 @@ var header = {"Content-type":"application/json"};
 <% for(var key in field) { %><%=key%>:<%=field[key]%> <% }%>
 <% }) %>
 */
-describe('<%=table%>表测试',() => {
-    it("增加<%=table%>测试",() => {
-        //请填写增加对象let body = {name:"admin@yuanku.org",password:"admin"};
-        let body = {};
-        return fetch(rooturl.concat('/<%=table%>'),{method:'post',headers:header,body:JSON.stringify(body)}).then(( res )=> {
-            return res.json();
-        }).then((json)=> {
-            console.log(json);
-            expect(json).to.be.deep.equal({"code":1,"msg":"操作成功!"});
-        });
+describe('<%=table%>表测试', () => {
+  it('增加<%=table%>测试', () => {
+        // 请填写增加对象let body = {name:"admin@yuanku.org",password:"admin"};
+    const body = {};
+    return fetch(rooturl.concat('/<%=table%>'), { method: 'post', headers: header, body: JSON.stringify(body) }).then((res) => {
+      return res.json();
+    }).then((json) => {
+      console.log(json);
+      expect(json).to.be.deep.equal({ 'code': 1, 'msg': '操作成功!' });
     });
+  });
 
-    it("根据ID获取<%=table%>",()=> {      
-        return fetch(rooturl.concat('/<%=table%>/1')).then(( res )=> {
-            return res.json();
-        }).then((json)=> {
-            console.log(json);
-            expect(json.data).to.not.be.empty;
-        });
+  it('根据ID获取<%=table%>', () => {
+    return fetch(rooturl.concat('/<%=table%>/1')).then((res) => {
+      return res.json();
+    }).then((json) => {
+      console.log(json);
+      expect(json.data).to.not.be.empty;
     });
+  });
 
-    it("根据ID修改<%=table%>",()=> {
-        //请填写修改对象let body = {name:"admin@yuanku.org",password:"admin"};
-        let body = {};     
-        return fetch(rooturl.concat('/<%=table%>/1'),{method:'put',headers:header,body:JSON.stringify(body)}).then(( res )=> {
-            return res.json();
-        }).then((json)=> {
-            console.log(json);
-            expect(json).to.be.deep.equal({"code":1,"msg":"操作成功!"});
-        });
+  it('根据ID修改<%=table%>', () => {
+        // 请填写修改对象let body = {name:"admin@yuanku.org",password:"admin"};
+    const body = {};
+    return fetch(rooturl.concat('/<%=table%>/1'), { method: 'put', headers: header, body: JSON.stringify(body) }).then((res) => {
+      return res.json();
+    }).then((json) => {
+      console.log(json);
+      expect(json).to.be.deep.equal({ 'code': 1, 'msg': '操作成功!' });
     });
+  });
 
-    it("根据ID删除<%=table%>",()=> {   
-        return fetch(rooturl.concat('/<%=table%>/0'),{method:'delete'}).then(( res )=> {
-            return res.json();
-        }).then((json)=> {
-            console.log(json);
-            expect(json).to.be.deep.equal({"code":1,"msg":"操作成功!"});
-        });
+  it('根据ID删除<%=table%>', () => {
+    return fetch(rooturl.concat('/<%=table%>/0'), { method: 'delete' }).then((res) => {
+      return res.json();
+    }).then((json) => {
+      console.log(json);
+      expect(json).to.be.deep.equal({ 'code': 1, 'msg': '操作成功!' });
     });
+  });
 
-    it("查询<%=table%>",()=> {   
-        return fetch(rooturl.concat('/<%=table%>')).then(( res )=> {
-            return res.json();
-        }).then((json)=> {
-            console.log(json);
-            expect(json).to.not.be.empty;
-        });
+  it('查询<%=table%>', () => {
+    return fetch(rooturl.concat('/<%=table%>')).then((res) => {
+      return res.json();
+    }).then((json) => {
+      console.log(json);
+      expect(json).to.not.be.empty;
     });
+  });
 });
