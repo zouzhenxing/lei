@@ -7,5 +7,6 @@ module.exports = {
         express : false,
         rootPath : false,
         config : false,
+        util : false,
     }
 };
