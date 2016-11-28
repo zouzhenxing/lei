@@ -27,6 +27,7 @@
     "mocha": "^2.5.3",
     "mochawesome": "^1.5.1",
     "multer": "^1.2.0",
+    "multiparty": "^4.1.2",
     "mysql": "^2.11.1",
     "node-fetch": "^1.6.0",
     "serve-favicon": "^2.3.0",

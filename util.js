@@ -57,6 +57,32 @@ exports.upfile = () => {
   });
 };
 
+const multiparty = require('multiparty');
+ /*
+  * 提取form提交的文件
+  * */
+exports.parseForm = ( req ) => {
+  return new Promise((resolve, reject) => {
+    const form = new multiparty.Form({
+      maxFieldsSize: 10,
+      maxFilesSize: 1024 * 1024 * 3, // 限制上传3m
+    });
+    form.parse(req, function (err, fields, files) {
+      if (err) {
+        if (err.code === 'ETOOBIG') {
+          return reject(new Error('ETOOBIG')); // 上传文件过大
+        }
+        return reject(err);
+      }
+      const _files = [];
+      for (const key in files) {
+        _files.push(files[key][0]);
+      }
+      resolve({ fields, files: _files });
+    });
+  });
+}
+
 /**
  * 成功返回
  */
