@@ -61,7 +61,7 @@ const multiparty = require('multiparty');
  /*
   * 提取form提交的文件
   * */
-exports.parseForm = ( req ) => {
+exports.parseForm = (req) => {
   return new Promise((resolve, reject) => {
     const form = new multiparty.Form({
       maxFieldsSize: 10,
@@ -81,7 +81,7 @@ exports.parseForm = ( req ) => {
       resolve({ fields, files: _files });
     });
   });
-}
+};
 
 /**
  * 成功返回

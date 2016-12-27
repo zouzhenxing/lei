@@ -6,7 +6,8 @@
   "scripts": {
     "test:report": "./node_modules/.bin/mocha",
     "test": "./node_modules/.bin/mocha --reporter mochawesome",
-    "eslint": "eslint . --fix"
+    "eslint": "./node_modules/.bin/eslint . --fix",
+    "dep-pro": "export NODE_ENV=production && pm2 start index.js -n threeticket -l debug.log --merge-logs --watch --ignore-watch='node_modules **/*.json **/*.log public'"
   },
   "repository": {
     "type": "git",
