@@ -8,5 +8,6 @@ module.exports = {
         rootPath : false,
         config : false,
         util : false,
+        log4js : false,
     }
 };

@@ -45,7 +45,7 @@ Promise.coroutine(function* () {
     // 增加路由至index.js
   const index = yield fs.readFileAsync('./index.js');
   const routerstr = 'app.use("/'.concat(table, '",require(rootPath.concat("/router/', table, 'Router.js")));');
-  yield fs.writeFileAsync('./index.js', index.toString().replace('//挂载自定义路由表(勿删)', '//挂载自定义路由表(勿删)'.concat('\n', routerstr)));
+  yield fs.writeFileAsync('./index.js', index.toString().replace('// 挂载自定义路由表(勿删)', '// 挂载自定义路由表(勿删)'.concat('\n', routerstr)));
   console.log('路由文件创建成功!');
     
     // 读取服务模板

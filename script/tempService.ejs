@@ -1,6 +1,7 @@
 'use strict';
 
 const <%=table %>Module = require(rootPath.concat("/module/<%=table%>Module.js"));
+const logger = log4js.getLogger('system');
 
 exports.select = (req,res,next) => {
     let conn;
@@ -9,7 +10,7 @@ exports.select = (req,res,next) => {
         let result = yield <%=table %>Module.select(conn,req.query);
         return res.json(util.success( {data:result} ));
     })().catch(( err )=> {
-        console.log(new Date(),err.stack);
+        logger.error(err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -23,7 +24,7 @@ exports.get = (req,res,next) => {
         let result = yield <%=table%>Module.get(conn,req.params);
         return res.json(util.success( {data:result} ));
     })().catch(( err )=> {
-        console.log(new Date(),err.stack);
+        logger.error(err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -37,7 +38,7 @@ exports.add = (req,res,next) => {
         yield <%=table%>Module.add(conn,req.body);
         return res.json(config.message.success);
     })().catch(( err )=> {
-        console.log(new Date(),err.stack);
+        logger.error(err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -51,7 +52,7 @@ exports.update = (req,res,next) => {
         yield <%=table%>Module.update(conn,req.body,req.params);
         return res.json(config.message.success);
     })().catch(( err )=> {
-        console.log(new Date(),err.stack);
+        logger.error(err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();
@@ -65,7 +66,7 @@ exports.delete = (req,res,next) => {
         yield <%=table%>Module.delete(conn,req.params);
         return res.json(config.message.success);
     })().catch(( err )=> {
-        console.log(new Date(),err.stack);
+        logger.error(err.stack);
         return res.json(config.message.error);
     }).finally(()=> {
         conn.release();

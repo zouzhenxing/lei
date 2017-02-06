@@ -10,6 +10,36 @@ global.fs = Promise.promisifyAll(require('fs'));
  */
 global.config = require('./config.json');
 
+
+/**
+ * 配置日志
+ */
+global.log4js = require('log4js');
+log4js.configure({
+  appenders: [
+    {
+      type: 'dateFile',
+      filename: 'logs/system.log',
+      pattern: '-yyyy-MM-dd',
+      category: 'system',
+    },
+    {
+      type: 'console',
+      category: 'system',
+    },
+    {
+      type: 'dateFile',
+      filename: 'logs/wechat.log',
+      pattern: '-yyyy-MM-dd',
+      category: 'wechat',
+    },
+    {
+      type: 'console',
+      category: 'wechat',
+    },
+  ],
+});
+
 /**
  * 连接redis数据库
  */
