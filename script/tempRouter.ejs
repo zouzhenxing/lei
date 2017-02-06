@@ -7,16 +7,14 @@ const <%=table%>Router = express.Router();
  * title : 路由1
  * url : /api/test
  * method : get
- * params : name path false 用户名
- * params : sex path false 性别
- * code: 9000 系统错误
- * code: 8000 授权错误
+ * code: 1 操作成功
+ * code: 0 操作失败
  * return :
- * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * ``` 
  * {
  *   hello:'world',
  * }
- * ` ``
+ * ```
  * */
 <%=table%>Router.get("/",<%=table%>Service.select);
 
@@ -24,67 +22,45 @@ const <%=table%>Router = express.Router();
  * title : 路由1
  * url : /api/test
  * method : get
- * params : name path false 用户名
- * params : sex path false 性别
- * code: 9000 系统错误
- * code: 8000 授权错误
+ * params : id path true 用户名
+ * code: 1 操作成功
+ * code: 0 操作失败
  * return :
- * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * ``` 
  * {
  *   hello:'world',
  * }
- * ` ``
+ * ```
  * */
 <%=table%>Router.get("/:id",<%=table%>Service.get);
 
 /*
  * title : 路由1
  * url : /api/test
- * method : get
- * params : name path false 用户名
- * params : sex path false 性别
- * code: 9000 系统错误
- * code: 8000 授权错误
- * return :
- * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
- * {
- *   hello:'world',
- * }
- * ` ``
+ * method : post
+ * params : name body true 用户名
+ * code: 1 操作成功
+ * code: 0 操作失败
  * */
 <%=table%>Router.post("/",<%=table%>Service.add);
 
 /*
  * title : 路由1
  * url : /api/test
- * method : get
- * params : name path false 用户名
- * params : sex path false 性别
- * code: 9000 系统错误
- * code: 8000 授权错误
- * return :
- * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
- * {
- *   hello:'world',
- * }
- * ` ``
+ * method : put
+ * params : id path true 主键
+ * code: 1 操作成功
+ * code: 0 操作失败
  * */
 <%=table%>Router.put("/:id",<%=table%>Service.update);
 
 /*
  * title : 路由1
  * url : /api/test
- * method : get
- * params : name path false 用户名
- * params : sex path false 性别
- * code: 9000 系统错误
- * code: 8000 授权错误
- * return :
- * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
- * {
- *   hello:'world',
- * }
- * ` ``
+ * method : delete
+ * params : id path true 主键
+ * code: 1 操作成功
+ * code: 0 操作失败
  * */
 <%=table%>Router.delete("/:id",<%=table%>Service.delete);
 
