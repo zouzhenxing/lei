@@ -8,7 +8,7 @@
     "test": "./node_modules/.bin/mocha --reporter mochawesome",
     "eslint": "./node_modules/.bin/eslint . --fix",
     "dep-pro": "export NODE_ENV=production && pm2 start index.js -n threeticket -l debug.log --merge-logs --watch --ignore-watch='node_modules **/*.json **/*.log public'",
-    "tinynote": "tinynote -source '/router/*.js' -dist 'api.md'"
+    "tinynote": "tinynote -source \"/router/*.js\" -dist \"api.md\""
   },
   "repository": {
     "type": "git",
