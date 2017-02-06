@@ -1,8 +1,8 @@
- #说明
- [查看说明请跳转至cnode 整合Express + Mysql + mocha，自动生成代码~~~~~](https://zhuanlan.zhihu.com/p/22305003)
+# 使用说明
+[整合Express + Mysql + mocha，自动生成代码~~~~~](https://zhuanlan.zhihu.com/p/22305003)
 
 
- MIT License
+MIT License
 
 Copyright (c) 2016 zouzhenxing
 
