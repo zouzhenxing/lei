@@ -3,10 +3,89 @@
 const <%=table%>Service = require(rootPath.concat("/service/<%=table%>Service.js"));
 const <%=table%>Router = express.Router();
 
+/*
+ * title : 路由1
+ * url : /api/test
+ * method : get
+ * params : name path false 用户名
+ * params : sex path false 性别
+ * code: 9000 系统错误
+ * code: 8000 授权错误
+ * return :
+ * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * {
+ *   hello:'world',
+ * }
+ * ` ``
+ * */
 <%=table%>Router.get("/",<%=table%>Service.select);
+
+/*
+ * title : 路由1
+ * url : /api/test
+ * method : get
+ * params : name path false 用户名
+ * params : sex path false 性别
+ * code: 9000 系统错误
+ * code: 8000 授权错误
+ * return :
+ * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * {
+ *   hello:'world',
+ * }
+ * ` ``
+ * */
 <%=table%>Router.get("/:id",<%=table%>Service.get);
+
+/*
+ * title : 路由1
+ * url : /api/test
+ * method : get
+ * params : name path false 用户名
+ * params : sex path false 性别
+ * code: 9000 系统错误
+ * code: 8000 授权错误
+ * return :
+ * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * {
+ *   hello:'world',
+ * }
+ * ` ``
+ * */
 <%=table%>Router.post("/",<%=table%>Service.add);
+
+/*
+ * title : 路由1
+ * url : /api/test
+ * method : get
+ * params : name path false 用户名
+ * params : sex path false 性别
+ * code: 9000 系统错误
+ * code: 8000 授权错误
+ * return :
+ * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * {
+ *   hello:'world',
+ * }
+ * ` ``
+ * */
 <%=table%>Router.put("/:id",<%=table%>Service.update);
+
+/*
+ * title : 路由1
+ * url : /api/test
+ * method : get
+ * params : name path false 用户名
+ * params : sex path false 性别
+ * code: 9000 系统错误
+ * code: 8000 授权错误
+ * return :
+ * ` `` <-------这三个点和markdown的语法有冲突，写文档的时候只能故意空了一格。
+ * {
+ *   hello:'world',
+ * }
+ * ` ``
+ * */
 <%=table%>Router.delete("/:id",<%=table%>Service.delete);
 
 module.exports = <%=table%>Router;
