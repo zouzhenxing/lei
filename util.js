@@ -44,10 +44,10 @@ log4js.configure({
  * 连接redis数据库
  */
 const ioRedis = require('ioredis');
-const redisClient = () => {
+exports.redisClient = () => {
   return new ioRedis(config.redis);
 };
-// global.redisClient = redisClient();
+// global.redisClient = exports.redisClient();
 
 /**
  * 加载数据库配置文件
