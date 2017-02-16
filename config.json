@@ -1,9 +1,9 @@
 {
     "message": {
-        "notfound" : {"code":0,"msg":"页面没找到!"},
-        "servererr" : {"code":0,"msg":"服务器内部异常!"},
-        "success" : {"code":1,"msg":"操作成功!"},
-        "error" : {"code":0,"msg":"操作失败!"}
+        "notfound" : {"code":1,"msg":"页面没找到!"},
+        "servererr" : {"code":1,"msg":"服务器内部异常!"},
+        "success" : {"code":0,"msg":"操作成功!"},
+        "error" : {"code":1,"msg":"操作失败!"}
     },
     "mysql" : {
         "host"        : "<%=mysql.host%>",
