@@ -1,74 +1,74 @@
 'use strict';
 
-const <%=table %>Module = require(rootPath.concat("/module/<%=table%>Module.js"));
+const hrcaseModule = require(rootPath.concat("/module/<%=table%>Module.js"));
 const logger = log4js.getLogger('system');
 
-exports.select = (req,res,next) => {
+exports.select = Promise.coroutine(function* (req,res,next) {
     let conn;
-    Promise.coroutine(function* () {
+    try {
         conn = yield util.getConnect();
-        let result = yield <%=table %>Module.select(conn,req.query);
+        let result = yield hrcaseModule.select(conn,req.query);
         return res.json(util.success( {data:result} ));
-    })().catch(( err )=> {
-        logger.error(err.stack);
+    } catch (error) {
+        logger.error(error.stack);
         return res.json(config.message.error);
-    }).finally(()=> {
+    } finally {
         conn.release();
-    });
-}
+    }
+});
 
-exports.get = (req,res,next) => {
+exports.get = Promise.coroutine(function* (req,res,next) {
     let conn;
-    Promise.coroutine(function* () {
+    try {
         conn = yield util.getConnect();
-        let result = yield <%=table%>Module.get(conn,req.params);
+        let result = yield hrcaseModule.get(conn,req.params);
         return res.json(util.success( {data:result} ));
-    })().catch(( err )=> {
-        logger.error(err.stack);
+    } catch (error) {
+        logger.error(error.stack);
         return res.json(config.message.error);
-    }).finally(()=> {
+    } finally {
         conn.release();
-    });
-}
+    }
+});
 
-exports.add = (req,res,next) => {
+exports.add = Promise.coroutine(function* (req,res,next) {
     let conn;
-    Promise.coroutine(function* () {
+    try {
         conn = yield util.getConnect();
-        yield <%=table%>Module.add(conn,req.body);
+        yield hrcaseModule.add(conn,req.body);
         return res.json(config.message.success);
-    })().catch(( err )=> {
-        logger.error(err.stack);
+    } catch (error) {
+        logger.error(error.stack);
         return res.json(config.message.error);
-    }).finally(()=> {
+    } finally {
         conn.release();
-    });
-}
+    }
+});
 
-exports.update = (req,res,next) => {
+exports.update = Promise.coroutine(function* (req,res,next) {
     let conn;
-    Promise.coroutine(function* () {
+    try {
         conn = yield util.getConnect();
-        yield <%=table%>Module.update(conn,req.body,req.params);
+        yield hrcaseModule.update(conn,req.body,req.params);
         return res.json(config.message.success);
-    })().catch(( err )=> {
-        logger.error(err.stack);
+    } catch (error) {
+        logger.error(error.stack);
         return res.json(config.message.error);
-    }).finally(()=> {
+    } finally {
         conn.release();
-    });
-}
+    }
+});
 
-exports.delete = (req,res,next) => {
+exports.delete = Promise.coroutine(function* (req,res,next) {
     let conn;
-    Promise.coroutine(function* () {
+    try {
         conn = yield util.getConnect();
-        yield <%=table%>Module.delete(conn,req.params);
+        yield hrcaseModule.delete(conn,req.params);
         return res.json(config.message.success);
-    })().catch(( err )=> {
-        logger.error(err.stack);
+    } catch (error) {
+        logger.error(error.stack);
         return res.json(config.message.error);
-    }).finally(()=> {
+    } finally {
         conn.release();
-    });
-}
+    }
+});
