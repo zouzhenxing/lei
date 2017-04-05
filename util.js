@@ -10,7 +10,6 @@ global.fs = Promise.promisifyAll(require('fs'));
  */
 global.config = require('./config.json');
 
-
 /**
  * 配置日志
  */
