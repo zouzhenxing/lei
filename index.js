@@ -49,6 +49,11 @@ app.use((err, req, res, next) => {
   res.status(500).send(config.message.servererr);
 });
 
+// 当发生了未捕获的promise 打印日志
+process.on('uncaughtException', (reason, p) => {
+  logger.error("Unhandled Rejection at: Promise ", p, " reason: ", reason);
+});
+
 // 当发生了未捕获的异常 守护中间件
 process.on('uncaughtException', (err) => {
   logger.error(err.stack);
