@@ -7,8 +7,8 @@ const <%=table%>Router = express.Router();
  * title : 路由1
  * url : /api/test
  * method : get
- * code: 1 操作成功
- * code: 0 操作失败
+ * code: 0 操作成功
+ * code: 1 操作失败
  * return :
  * ``` 
  * {
@@ -23,8 +23,8 @@ const <%=table%>Router = express.Router();
  * url : /api/test
  * method : get
  * params : id path true 用户名
- * code: 1 操作成功
- * code: 0 操作失败
+ * code: 0 操作成功
+ * code: 1 操作失败
  * return :
  * ``` 
  * {
@@ -39,8 +39,8 @@ const <%=table%>Router = express.Router();
  * url : /api/test
  * method : post
  * params : name body true 用户名
- * code: 1 操作成功
- * code: 0 操作失败
+ * code: 0 操作成功
+ * code: 1 操作失败
  * */
 <%=table%>Router.post("/",<%=table%>Service.add);
 
@@ -49,8 +49,8 @@ const <%=table%>Router = express.Router();
  * url : /api/test
  * method : put
  * params : id path true 主键
- * code: 1 操作成功
- * code: 0 操作失败
+ * code: 0 操作成功
+ * code: 1 操作失败
  * */
 <%=table%>Router.put("/:id",<%=table%>Service.update);
 
@@ -59,8 +59,8 @@ const <%=table%>Router = express.Router();
  * url : /api/test
  * method : delete
  * params : id path true 主键
- * code: 1 操作成功
- * code: 0 操作失败
+ * code: 0 操作成功
+ * code: 1 操作失败
  * */
 <%=table%>Router.delete("/:id",<%=table%>Service.delete);
 
